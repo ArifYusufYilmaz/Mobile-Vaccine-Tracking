@@ -8,11 +8,14 @@ export default function HomeScreen(props){
     function handleNavigation(){
         props.navigation.navigate('VaccineCalendar');
     }
+    function handlePersonNavigation(){
+        props.navigation.navigate('Person');
+    }
     return(
         <View style={styles.container}>
                 <View style = {styles.body}>
                     <View style = {styles.card}>
-                        <TouchableOpacity onPress ={handleNavigation} style={{flex:1}}>
+                        <TouchableOpacity onPress ={handlePersonNavigation} style={{flex:1}}>
                             <SectionCard ></SectionCard> 
                         </TouchableOpacity>
                     </View>

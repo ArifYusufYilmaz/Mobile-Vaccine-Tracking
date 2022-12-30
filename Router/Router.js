@@ -4,18 +4,13 @@ import { Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../Screens/HomeScreen';
 import { createStackNavigator } from '@react-navigation/stack';
+import VaccineCalendarScreen from '../Screens/VaccineCalendarScreen';
+import PersonScreen from '../Screens/PersonScreen';
 
 
 
-function VaccineCalendarScreen(){
-return(
-    <View>
-        <Text>
-            hi vaccine
-        </Text>
-    </View>
-);
-}
+
+
 function ProfileScreen(){
     return(
         <View>
@@ -30,6 +25,7 @@ function HomeStack(){
     return(
         <Stack.Navigator >
             <Stack.Screen name="Home" component={HomeScreen}></Stack.Screen>
+            <Stack.Screen name="Person" component={PersonScreen}></Stack.Screen>
             <Stack.Screen name="VaccineCalendar" component={VaccineCalendarScreen}></Stack.Screen>
         </Stack.Navigator>
     );
