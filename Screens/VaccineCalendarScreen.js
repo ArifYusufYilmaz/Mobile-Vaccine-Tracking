@@ -5,11 +5,11 @@ import VaccineCard from '../components/VaccineCalendarComponents/VaccineCard';
 import VaccineGenre from '../components/VaccineCalendarComponents/VaccineGenre';
 
 export default function VaccineCalendarScreen(){
-    const [genresVisible, setGenresVisible] = useState(true);
+    const [genresVisible, setGenresVisible] = useState(false);
     function handleGenresVisibility(){
         setGenresVisible(!genresVisible);
     }
-    
+
     return(
         <View>
             <TouchableOpacity onPress={handleGenresVisibility}>
