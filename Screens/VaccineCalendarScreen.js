@@ -2,23 +2,26 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useState } from 'react/cjs/react.development';
 import VaccineCard from '../components/VaccineCalendarComponents/VaccineCard';
-import VaccineGenre from '../components/VaccineCalendarComponents/VaccineGenre';
+import { AddToDate, DateReFormatter } from '../utils/DateFormatter';
 
-export default function VaccineCalendarScreen(){
-    const [genresVisible, setGenresVisible] = useState(false);
-    function handleGenresVisibility(){
-        setGenresVisible(!genresVisible);
-    }
+export default function VaccineCalendarScreen(props){
+    const person = props.route.params.person;
+
+     DateReFormatter(person.birthDate)
 
     return(
         <View>
-            <TouchableOpacity onPress={handleGenresVisibility}>
-                <VaccineCard></VaccineCard>
-                {genresVisible && 
-                <VaccineGenre></VaccineGenre>     
-                }
-            </TouchableOpacity>
-          </View>
+                <VaccineCard vaccineDateTitle="Doğumda" vaccineDate={person.birthDate} genres={["Hep-B"]}></VaccineCard>
+                 <VaccineCard vaccineDateTitle="1.Ayın Sonu" vaccineDate={AddToDate(person.birthDate, 1,0)} genres={["Hep-B"]}></VaccineCard>
+                <VaccineCard vaccineDateTitle="2.Ayın Sonu" vaccineDate={AddToDate(person.birthDate, 2,0)} genres={["BCG","KPA","DaBT-İPA-Hib"]}></VaccineCard>
+                <VaccineCard vaccineDateTitle="4.Ayın Sonu" vaccineDate={AddToDate(person.birthDate, 4,0)} genres={["KPA","DaBT-İPA-Hib"]}></VaccineCard>
+                <VaccineCard vaccineDateTitle="6.Ayın Sonu" vaccineDate={AddToDate(person.birthDate, 6,0)} genres={["Hep-B","OPA","DaBT-İPA-Hib"]}></VaccineCard>
+                <VaccineCard vaccineDateTitle="12.Ayın Sonu" vaccineDate={AddToDate(person.birthDate, 0,1)} genres={["KPA","Su Çiçeği", "KKK"]}></VaccineCard>
+                <VaccineCard vaccineDateTitle="18.Ayın Sonu" vaccineDate={AddToDate(person.birthDate, 6,1)} genres={["DaBT-İPA-Hib","OPA", "Hep-A"]}></VaccineCard>
+                <VaccineCard vaccineDateTitle="24.Ayın Sonu" vaccineDate={AddToDate(person.birthDate, 0,2)} genres={["Hep-A"]}></VaccineCard>
+                <VaccineCard vaccineDateTitle="48.Ayın Sonu" vaccineDate={AddToDate(person.birthDate, 0,4)} genres={["KKK", "DaBT-İPA"]}></VaccineCard>
+                <VaccineCard vaccineDateTitle="13.Yaş" vaccineDate={AddToDate(person.birthDate, 0,13)} genres={["Td"]}></VaccineCard> 
+        </View>
     );
 }
 const style= StyleSheet.create({

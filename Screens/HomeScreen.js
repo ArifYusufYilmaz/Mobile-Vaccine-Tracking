@@ -6,7 +6,7 @@ import SectionCard from "../components/HomeComponents/SectionCard";
 
 export default function HomeScreen(props){
     function handleNavigation(){
-        props.navigation.navigate('VaccineCalendar');
+        props.navigation.navigate('TrackingPeople');
     }
     function handlePersonNavigation(){
         props.navigation.navigate('Person');

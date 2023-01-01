@@ -1,11 +1,13 @@
 import React from "react";
 import { Text, View } from "react-native";
-import PersonInserting from "./PersonInserting";
 
-export default function PersonCard(){
+
+export default function PersonCard(props){
     return(
         <View>
-           <PersonInserting></PersonInserting>
+            <Text>
+            {JSON.stringify(props.person)}
+            </Text>
         </View>
     );
 }

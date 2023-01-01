@@ -1,10 +1,10 @@
 import React from "react";
 import { Text, View } from "react-native";
-export default function VaccineDateInfo(){
+export default function VaccineDateInfo(props){
    return(
     <View>
         <Text>
-            hi info
+            {props.vaccineDateTitle}
         </Text>
     </View>
    );

@@ -4,9 +4,9 @@ import { Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../Screens/HomeScreen';
 import { createStackNavigator } from '@react-navigation/stack';
-import VaccineCalendarScreen from '../Screens/VaccineCalendarScreen';
 import PersonScreen from '../Screens/PersonScreen';
-
+import TrackingPeople from '../Screens/TrackingPeople';
+import VaccineCalendarScreen from '../Screens/VaccineCalendarScreen'
 
 
 
@@ -26,7 +26,8 @@ function HomeStack(){
         <Stack.Navigator >
             <Stack.Screen name="Home" component={HomeScreen}></Stack.Screen>
             <Stack.Screen name="Person" component={PersonScreen}></Stack.Screen>
-            <Stack.Screen name="VaccineCalendar" component={VaccineCalendarScreen}></Stack.Screen>
+            <Stack.Screen name="TrackingPeople" component={TrackingPeople}></Stack.Screen>
+            <Stack.Screen name="VaccineCalendarScreen" component={VaccineCalendarScreen}></Stack.Screen>
         </Stack.Navigator>
     );
     

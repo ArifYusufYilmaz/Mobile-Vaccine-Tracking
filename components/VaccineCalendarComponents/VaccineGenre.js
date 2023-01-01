@@ -1,10 +1,10 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-export default function(){
+export default function VaccineGenre(props){
     return(
         <View>
             <Text>
-                hi genre
+                hi genre {props.genre}
             </Text>
         </View>
     );
