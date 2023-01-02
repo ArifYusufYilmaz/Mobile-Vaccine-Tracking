@@ -7,11 +7,11 @@ export const PeopleSlice = createSlice({
         value : []
     },
     reducers:{
-        save : (state, action)  => {
+        savePerson : (state, action)  => {
             state.value = [...state.value, action.payload]
         }
     }
 })
 export const selectPeople = (state ) => state.people.value;
-export const {save} = PeopleSlice.actions
+export const {savePerson} = PeopleSlice.actions
 export default PeopleSlice.reducer

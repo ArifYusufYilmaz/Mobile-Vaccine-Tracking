@@ -3,7 +3,7 @@ import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import { useSelector } from "react-redux";
 import { selectPeople } from "../redux/PeopleSlice";
 import PersonCard from "../components/PersonComponents/PersonCard";
-export default function TrackingPeople(props){
+export default function TrackingPeopleForVaccineInfo(props){
     const people = useSelector(selectPeople)
 
     function handleVaccineCScreenNavigation(person){

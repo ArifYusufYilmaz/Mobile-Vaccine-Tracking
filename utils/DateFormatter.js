@@ -3,10 +3,7 @@ export default function DateFormatter(date) {
         date = date.toISOString().split('T')[0]
         return date;
 }
-export function DateReFormatter(date){
-        const newDate = new Date(date);
-        newDate.setDate(newDate.getDate() + 180)
-}
+
 
 export function AddToDate(date, incrementMonth, incrementYear){
 

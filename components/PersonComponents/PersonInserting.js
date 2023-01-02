@@ -1,10 +1,10 @@
 import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { Button, FlatList, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Button, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import DateTimePickerModal from  "react-native-modal-datetime-picker";
 import  Toast  from "react-native-toast-message";
 import { useDispatch, useSelector } from "react-redux";
-import { save, selectPeople } from "../../redux/PeopleSlice";
+import { savePerson, selectPeople } from "../../redux/PeopleSlice";
 
 import DateFormatter from "../../utils/DateFormatter";
 
@@ -25,11 +25,7 @@ export default function PersonInserting(){
         birthDate: null,
     }
     function handleFormSubmit(formValues){
-         console.log("heyyyyyyyyyyyyyyyy")
-         console.log(formValues.birthDate)
-       {console.log(formValues.birthDate.setDate(formValues.birthDate.getDate() + 365*2))}
-       console.log(formValues.birthDate)
-       
+         
         if(formValues.firstName.trim().length  === 0 || formValues.lastName.trim().length  === 0){
            return;
         }else {
@@ -39,7 +35,7 @@ export default function PersonInserting(){
                 birthDate : DateFormatter(formValues.birthDate)
                 
             }
-             dispatch(save(personToAdd));
+             dispatch(savePerson(personToAdd));
              setSendButtonVisible(false)
              Toast.show({
                 type: 'success',
@@ -51,15 +47,15 @@ export default function PersonInserting(){
     
 
     return(
-        <View>
+        <View >
             <Formik initialValues={initialFormValues} onSubmit={handleFormSubmit}>
             {({values, handleChange, handleSubmit, setFieldValue}) =>
                 <>
                      
-                    <TextInput placeholder="İsim.."  value={values.firstName} onChangeText={handleChange('firstName')}/>
-                    <TextInput placeholder="Soyisim.." value={values.lastName} onChangeText={handleChange('lastName')}/>
+                    <TextInput style={styles.inputStyle} placeholder="İsim.."  value={values.firstName} onChangeText={handleChange('firstName')}/>
+                    <TextInput style={styles.inputStyle} placeholder="Soyisim.." value={values.lastName} onChangeText={handleChange('lastName')}/>
                     <TouchableOpacity onPress={()=> setDateVisible(true)}>
-                    <TextInput placeholder={ DateFormatter(date) } editable={false} value={values.birthDate}   />
+                    <TextInput style={styles.inputStyle} placeholder={ DateFormatter(date) } editable={false} value={values.birthDate}   />
                     </TouchableOpacity>
                     
                     <DateTimePickerModal
@@ -68,16 +64,25 @@ export default function PersonInserting(){
                         onConfirm={(date)=> {setDate(date), setDateVisible(false), setSendButtonVisible(true), setFieldValue('birthDate', date)}}
                         onCancel = {()=> setDateVisible(false)}
                     />
-                    <Button title="Kisi Ekle" disabled={!sendButtonVisible} onPress={handleSubmit}></Button>
+                    <View style={styles.buttonStyle}>
+                    <Button  title="Kisi Ekle" disabled={!sendButtonVisible} onPress={handleSubmit}></Button>
+                    </View>
                 </>
             }   
             </Formik>
-        
-          
-
-            
         </View>
-       
-        
     );
 }
+const styles = StyleSheet.create({
+    
+    inputStyle:{
+        padding: 10,
+        margin: 10,
+        fontSize: 30,
+    },
+    buttonStyle:{
+        padding: 20,
+        margin: 10,
+        
+    }
+})

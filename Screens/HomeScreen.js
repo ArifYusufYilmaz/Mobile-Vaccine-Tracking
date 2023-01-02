@@ -6,34 +6,41 @@ import SectionCard from "../components/HomeComponents/SectionCard";
 
 export default function HomeScreen(props){
     function handleNavigation(){
-        props.navigation.navigate('TrackingPeople');
+        props.navigation.navigate('TrackingPeopleForVaccineInfo');
     }
     function handlePersonNavigation(){
         props.navigation.navigate('Person');
     }
+    function handleVaccineListNavigation(){
+        props.navigation.navigate('VaccineList');
+    }
+    function handleReminderNavigation(){
+        props.navigation.navigate('TrackingPeopleForVaccineReminder');
+    }
     return(
         <View style={styles.container}>
+           
                 <View style = {styles.body}>
                     <View style = {styles.card}>
                         <TouchableOpacity onPress ={handlePersonNavigation} style={{flex:1}}>
-                            <SectionCard ></SectionCard> 
+                            <SectionCard title={"Kişi Ekle"} iconName={"person-add-outline"}></SectionCard> 
                         </TouchableOpacity>
                     </View>
                     <View style = {styles.card}>
                           <TouchableOpacity onPress ={handleNavigation} style={{flex:1}}>
-                              <SectionCard ></SectionCard> 
+                              <SectionCard title={"Aşı Takvimi"} iconName={"calendar-outline"}></SectionCard> 
                           </TouchableOpacity>
                     </View>
                 </View>
                 <View style = {styles.body}>
                     <View style = {styles.card}>
-                        <TouchableOpacity style={{flex:1}}>
-                            <SectionCard ></SectionCard>
+                        <TouchableOpacity onPress={handleVaccineListNavigation} style={{flex:1}}>
+                            <SectionCard title={"Aşı Listesi"} iconName={"list-circle-outline"}></SectionCard>
                         </TouchableOpacity>
                     </View>
                     <View style = {styles.card}>
-                        <TouchableOpacity style={{flex:1}}>
-                            <SectionCard ></SectionCard>
+                        <TouchableOpacity onPress={handleReminderNavigation} style={{flex:1}}>
+                            <SectionCard title={"Aşı Hatırlatıcı"} iconName={"notifications-outline"}></SectionCard>
                         </TouchableOpacity>
                     </View>
                 </View>

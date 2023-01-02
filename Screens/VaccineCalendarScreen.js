@@ -7,12 +7,12 @@ import { AddToDate, DateReFormatter } from '../utils/DateFormatter';
 export default function VaccineCalendarScreen(props){
     const person = props.route.params.person;
 
-     DateReFormatter(person.birthDate)
+    
 
     return(
-        <View>
-                <VaccineCard vaccineDateTitle="Doğumda" vaccineDate={person.birthDate} genres={["Hep-B"]}></VaccineCard>
-                 <VaccineCard vaccineDateTitle="1.Ayın Sonu" vaccineDate={AddToDate(person.birthDate, 1,0)} genres={["Hep-B"]}></VaccineCard>
+        <View style={styles.container}>
+                <VaccineCard style={styles.cardStyle} vaccineDateTitle="Doğumda" vaccineDate={AddToDate(person.birthDate,0,0)} genres={["Hep-B"]}></VaccineCard>
+                <VaccineCard vaccineDateTitle="1.Ayın Sonu" vaccineDate={AddToDate(person.birthDate, 1,0)} genres={["Hep-B"]}></VaccineCard>
                 <VaccineCard vaccineDateTitle="2.Ayın Sonu" vaccineDate={AddToDate(person.birthDate, 2,0)} genres={["BCG","KPA","DaBT-İPA-Hib"]}></VaccineCard>
                 <VaccineCard vaccineDateTitle="4.Ayın Sonu" vaccineDate={AddToDate(person.birthDate, 4,0)} genres={["KPA","DaBT-İPA-Hib"]}></VaccineCard>
                 <VaccineCard vaccineDateTitle="6.Ayın Sonu" vaccineDate={AddToDate(person.birthDate, 6,0)} genres={["Hep-B","OPA","DaBT-İPA-Hib"]}></VaccineCard>
@@ -24,6 +24,15 @@ export default function VaccineCalendarScreen(props){
         </View>
     );
 }
-const style= StyleSheet.create({
+const styles= StyleSheet.create({
+    container: {
+        flex:1,
+        padding:5,
+        marginVertical: 10,
+        
+    },
+    cardStyle:{
+    }
+
 
 })
